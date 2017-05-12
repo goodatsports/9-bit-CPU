@@ -75,7 +75,7 @@ Do not be frightened by this fact! If you are too scared to overwrite a register
 ### Example R-Type Instructions
 
     000 0 0 0 010 - bitwise AND the bits in register 0 with itself and store the result in register 0
-    000 0 1 1 000 - ADD register 1 and 0 together and store the sum in register 1
+    000 1 1 0 000 - ADD register 1 and 0 together and store the sum in register 1
     000 1 0 1 011 - bitwise OR register 1 with register 0 and store the result in register 1
 
 
