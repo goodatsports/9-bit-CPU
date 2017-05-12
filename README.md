@@ -21,6 +21,10 @@ and not much else!
 Please continue your journey through our CPU and learn its secrets with the following section...
 
 ## <p align=center>INSTRUCTION SYNTAX</p>
+What follows are the specifications for the three main types of instructions our CPU can handle:
+- R-Type: any instruction which deals with multiple registers (e.g. add, sub, etc.)
+- I-Type: any instruction involving a single register and an immediate value such as loading immediate values or branching instructions
+- J-Type: **JUMP TO ANY INSTRUCTION ADDRESS** (from 0 to 63)
 
 ## R-Type
 
@@ -53,25 +57,47 @@ Do not be frightened by this fact! If you are too scared to overwrite a register
 
 ## I-Type
 
-I-Type instructions are always denoted by a 1 in the leftmost bit in an instruction,
+I-Type instructions are denoted by any op-code which is non-zero or the explicit **jump** op-code (001),
 and include branching, loading immediate values into registers, and load word from memory.
 The structure of an I-Type instruction depends on the on the specific op code used.
 For example, an li (load immediate) instruction follows this syntax:
 
 ### Load immediate (li)
 
-| op   | rd   | immediate  |
-| :---: |:---:| :------:|
-| 1 0 0 | 1 | 1 0 0 1 0 |
+| op    | rd  | immediate  |
+| :---: |:---:| :--------: |
+| 1 0 0 |  1  |  1 0 0 1 0 |
+
 (Load immediate value of 18 into register 1)
 
+### Store word (sw)
+
+|  op   | rd  |  address |
+| :---: |:---:| :------: |
+| 0 1 1 |  0  | 0 1 0 1  |
+
+(Store value at register 0 in memory address 5)
 
 To store a register value in memory (sw in MIPS), use op-code 011. The next bit will be the target register,
 and the remaining 5 bits are the address in memory where the value should be stored.
 
-### Store word (sw)
+### Branch if equal (beq)
 
-| op       | rd  | address  |
-| :---: |:---:| :------:|
-| 0 1 1 | 0 | 0 1 0 1 |
-(Store value at register 0 in memory address 5)
+|  op   |   rs  |   rt  |  shamt  |
+| :---: | :---: | :---: | :-----: |
+| 1 1 0 |   0   |   1   |  1 1 1  |
+
+(If register 0 and register 1 are equal, shift instruction memory 7 instructions ahead)
+
+The only branching instruction currently implemented is beq, which updates the program counter by
+a given amount passed in the shamt field.
+
+## JUMP
+|  op   | ~~~ destination ~~~   |
+| :---: | :-------------------: |
+| 0 0 1 |      1 1 1 1 0 1      |
+
+(First Class ticket to instruction 61)
+
+Here it is, the showstopper, the heartbreaker: use this bad boy to jump the program to any instruction that
+fits in the immediate field (i.e. 0 to 63)
