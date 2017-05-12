@@ -38,6 +38,7 @@ A svelte showcase of our CPU's capabilities has been pre-loaded in the cpu.circ 
 - 104: li $r0, 4
 - 0a0: lw $r1, 1
 - 009: sub $r0, $r0, $r1
+
 *Note:* $r0 and $r1 correspond to our **TWO** registers, 0 and 1.  
 
 
