@@ -1,9 +1,9 @@
 # 9-bit-CPU
-## authors: Nicole Cahlander and Jack Chambers
+### authors: Nicole Cahlander and Jack Chambers
 
 This document describes the architecture of our 9-bit CPU design as represented
 in the logisim cpu.circ file, and provides documentation of instructions our CPU is capable of handling.
-Any information contained within this readme or the cpu.circ file is purely for educational purposes.
+Any information contained within this readme or the cpu.circ file is intended purely for educational purposes.
 
 This CPU is based loosely on the MIPS architecture, and RISC architecture in general.
 As denoted by the title, this CPU works on 9-bit instructions. If you're asking yourself "wtf why,"
