@@ -1,5 +1,5 @@
 # 9-bit-CPU
-##authors: Nicole Cahlander and Jack Chambers
+## authors: Nicole Cahlander and Jack Chambers
 
 This document describes the architecture of our 9-bit CPU design as represented
 in the logisim cpu.circ file, and provides documentation of instructions our CPU is capable of handling.
@@ -20,9 +20,10 @@ and not much else!
 
 Please continue your journey through our CPU and learn its secrets with the following section...
 
-##<p align=center>INSTRUCTION SYNTAX</p>
+## <p align=center>INSTRUCTION SYNTAX</p>
 
-##R-Type
+## R-Type
+
 | op    |  rd   | rs    | rt   | func  |
 | :---: | :---: | :---: |:---: | :---: |
 | 0 0 0 |   _   |   _   |  _   | _ _ _ |
@@ -36,26 +37,29 @@ Please note that since this architecture is frighteningly lean, there are only T
 and thus at least one of the registers used in an R-Type instruction will always be overwritten.
 Do not be frightened by this fact! If you are too scared to overwrite a register you probably didn't need to perform the operation anyway.
 
-###BEHOLD THE R-TYPE FUNC OPTIONS
+### BEHOLD THE R-TYPE FUNC OPTIONS
+
     0 0 0 – ADD (add the contents of rs and rt, then store result in rd)
     0 0 1 – SUB  (subtract rt from rs and store result in rd)
     0 1 0 – AND (bitwise AND the contents of rs and rt, then store the result in rd)
     0 1 1 – OR (bitwise OR the contents of rs and rt, then store result in rd)
 
-###Example R-Type Instructions
+### Example R-Type Instructions
+
     000 0 0 0 010 - bitwise AND the bits in register 0 with itself and store the result in register 0
     000 0 1 1 000 - ADD register 1 and 0 together and store the sum in register 1
     000 1 0 1 011 - bitwise OR register 1 with register 0 and store the result in register 1
 
 
-##I-Type
+## I-Type
 
 I-Type instructions are always denoted by a 1 in the leftmost bit in an instruction,
 and include branching, loading immediate values into registers, and load word from memory.
 The structure of an I-Type instruction depends on the on the specific op code used.
 For example, an li (load immediate) instruction follows this syntax:
 
-###Load immediate (li)
+### Load immediate (li)
+
 | op   | rd   | immediate  |
 | :---: |:---:| :------:|
 | 1 0 0 | 1 | 1 0 0 1 0 |
@@ -65,7 +69,8 @@ For example, an li (load immediate) instruction follows this syntax:
 To store a register value in memory (sw in MIPS), use op-code 011. The next bit will be the target register,
 and the remaining 5 bits are the address in memory where the value should be stored.
 
-###Store word (sw)
+### Store word (sw)
+
 | op       | rd  | address  |
 | :---: |:---:| :------:|
 | 0 1 1 | 0 | 0 1 0 1 |
