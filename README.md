@@ -18,6 +18,29 @@ including...
 - Jumping!
 and not much else!
 
+Instructions can be written and executed from within the logisim ROM module located on the Western edge of the circuit. This module requires all instructions to be written in hexadecimal, but as is apparent our documentation and designed in binary. Alas, if this is nauseating to you, please feel free to use this handy converter when (not if) you begin writing your own programs:
+
+  [ALL SHALL BE CONVERTED](http://www.binaryhexconverter.com/binary-to-hex-converter)
+
+
+A svelte showcase of our CPU's capabilities has been pre-loaded in the cpu.circ file for your convenience and enjoyment, but feel free to write your own programs after carefully reading this documentation. The example program is as follows (in both hex and MIPS assembly format)
+
+- 042: j 2
+- 1c0: NOP
+- 101: li $r0, 1
+- 121: li $r1, 1
+- 010: add $r0, $r0, $r1
+- 0c1: sw $r0, 1
+- 192: beq $r0, $r1, 2
+- 1c0: NOP
+- 1c0: NOP
+- 0c0: sw $r0, 0
+- 104: li $r0, 4
+- 0a0: lw $r1, 1
+- 009: sub $r0, $r0, $r1
+*Note:* $r0 and $r1 correspond to our **TWO** registers, 0 and 1.  
+
+
 Please continue your journey through our CPU and learn its secrets with the following section...
 
 ## <p align=center>INSTRUCTION SYNTAX</p>
@@ -101,3 +124,12 @@ a given amount passed in the shamt field.
 
 Here it is, the showstopper, the heartbreaker: use this bad boy to jump the program to any instruction that
 fits in the immediate field (i.e. 0 to 63)
+
+## NOP
+|  op   |  doesn't matter!      |
+| :---: | :-------------------: |
+| 1 1 1 |  0 0 2 1 6 03333q3333 |
+
+Don't forget about the most important instruction in any computer: No Operation! This charming boy does nothing but let the CPU sit pretty and flex its simulated muscles. All that matters is the op-code (111), so feel free to stuff the rest of the instruction with your favorite bit values (mine's 1), it won't hurt anything, promise!
+
+# That's about it, thanks for reading!
