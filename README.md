@@ -18,7 +18,7 @@ including...
 - Jumping!
 and not much else!
 
-Instructions can be written and executed from within the logisim ROM module located on the Western edge of the circuit. This module requires all instructions to be written in hexadecimal, but as is apparent our documentation and designed in binary. Alas, if this is nauseating to you, please feel free to use this handy converter when (not if) you begin writing your own programs:
+Instructions can be written and executed from within the logisim ROM module located on the Western edge of the circuit. This module requires all instructions to be written in hexadecimal, but as is apparent our architecture was designed in binary. Alas, if this is nauseating to you, please feel free to use this handy converter when (not if) you begin writing your own programs:
 
   [ALL SHALL BE CONVERTED](http://www.binaryhexconverter.com/binary-to-hex-converter)
 
@@ -83,7 +83,7 @@ Do not be frightened by this fact! If you are too scared to overwrite a register
 
 I-Type instructions are denoted by any op-code which is non-zero or the explicit **jump** op-code (001),
 and include branching, loading immediate values into registers, and load word from memory.
-The structure of an I-Type instruction depends on the on the specific op code used.
+The structure of an I-Type instruction depends on the specific op code used.
 For example, an li (load immediate) instruction follows this syntax:
 
 ### Load immediate (li)
